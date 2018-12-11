@@ -248,7 +248,7 @@ margin-left:1.5em;
 
 .services-section {
     width: auto;
-    padding: 50px 0;
+    padding: 50px;
     color: #bd6e2d;
     background-color: #000;
     -webkit-background-size: cover;
@@ -312,17 +312,17 @@ margin-left:1.5em;
 }
 
 .btn-default {
-    border: 1px solid #42dca3;
-    color: #42dca3;
+    border: 1px solid #bd6e2d;
+    color: #bd6e2d;
     background-color: transparent;
 }
 
 .btn-default:hover,
 .btn-default:focus {
-    border: 1px solid #42dca3;
+    border: 1px solid #bd6e2d;
     outline: 0;
     color: #000;
-    background-color: #42dca3;
+    background-color: #bd6e2d;
 }
 
 ul.banner-social-buttons {

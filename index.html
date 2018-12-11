@@ -2,6 +2,9 @@
 <!--number: 20067121-->
 <!--course: multimedia applications development-->
 <!--module: web development 2-->
+<!--NOTE: I know the assignment description said 2-3 pages,
+ but I wanted to go for one long page with 2-3 different sections-->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,14 +17,9 @@
 
 <title>Assignment 2</title>
 
-<!-- bootstrap core css -->
+<!-- css -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-
-<link href="css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="css/gallery.css" rel="stylesheet" type="text/css">
 <link href="css/lightbox.css" rel="stylesheet" type="text/css" >
-
-<!-- custom css -->
 <link href="css/style.css" rel="stylesheet">
 	
 <!-- custom fonts -->
@@ -48,10 +46,13 @@
     </a>
 </div>
 	
-<!-- Collect the nav links, forms, and other content for toggling -->
+<!-- collect the nav links, forms, and other content for toggling, 
+note: once upon a time the nav bar had hover funtionality where 
+there would be a greyed out box over the section you wanted to go to, 
+this is not the case anymore unfortunately -->
 <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
     <ul class="nav navbar-nav">
-        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <!-- hidden li included to remove active class from about link when scrolled up past about section -->
         <li class="hidden">
 			<a href="#page-top"></a>
         </li>
@@ -65,7 +66,7 @@
 </div>
 </nav>
 
-<!-- Intro Header -->
+<!-- intro header -->
 <header class="intro">
 <div class="intro-body">
 <div class="container">
@@ -76,7 +77,7 @@
 </div>
 </header>
 
-<!-- About Section -->
+<!-- about section -->
 <section id="about" class="container content-section text-center">
 <div class="about-section">
 <div class="col-lg-8 col-lg-offset-2">
@@ -120,7 +121,10 @@
 </div>
 
 
-<!-- Services Section -->
+<!-- services section -->
+<!-- up until a certain point I had the layout of this section perfectly, but now im left with a huge gap inbetween
+"albums" and the form, if that was'nt bad enough the form has skewed the page and left a white bar down the right side.
+tried a few things to fix this but no luck -->
 <h2>Albums</h2>
 <section id="services" class="content-section text-center">
 <div class="services-section">
@@ -128,29 +132,29 @@
 <div class="col-lg-8 col-lg-offset-2">
 	
 <script id="some-template" type="text/x-handlebars-template">
-
+<!-- attempt at creating a table to display the json array-->
 <div class="container">
 <header>
-      <h1 class="text-center">Sales</h1>
-      <button class="float-right btn btn-primary" id="btncall" data-toggle="modal" data-target="#modalForm">Add Employee</button>
+
+<!-- table works for the most part but the "add track" button is nto functional, so i suppose you could say the table doesnt work at all, or as intended -->
+<h1 class="text-center">Tranquility Base</h1>
+<button class="float-right btn btn-primary" id="btncall" data-toggle="modal" data-target="#modalForm">Add Track</button>
 </header>
 <section>
 <table class="table table-hover table-striped" >
 <thead>
 <tr>
-<th>Emp ID</th>
-<th>Employee Name</th>
-<th>Address</th>
-<th>Email Address</th>
+<th>id</th>
+<th>Track</th>
+<th>Length</th>
 </tr>
 </thead>
 <tbody>
 {{#each this}}
 <tr>
 <td>{{id}}</td>
-<td>{{firstname}} {{lastname}} </td>
-<td>{{county}}</td>
-<td>{{email}}</td>
+<td>{{title}}</td>
+<td>{{length}}</td>
 </tr>
 {{/each}}
 </tbody>
@@ -159,95 +163,87 @@
 
 </div>
 </script>
-
+<!-- form to add another track to the array -->
 <div id = "content-placeholder"></div>
 
 <div class="modal fade" id ="modalForm"   role="dialog">
 <div class="modal-dialog">
 <div class="modal-content">
 <div class="modal-header">
-<h1>Add Employee</h1>
+
+<!-- trying to get the user to add another track to the album -->
+<h1>Add Track</h1>
 </div>
 <div class= modal-body>
-<form name = 'emplist' id = "emplist" >
+<form name = 'trackList' id = "trackList" >
 <div class="form-group row">
-<label for = "id" class="col-sm-3 col-form-label">Employee ID</label>
+<label for = "id" class="col-sm-3 col-form-label">Track number:</label>
 <div class="col-sm-9">
 <input type = "text" name="id" id ="id" autofocus class="form-control" required 
              title="Please enter numeric values only">
 </div>
 </div>
 <div class="form-group row">
-<label for = "firstname" class="col-sm-3 col-form-label">First Name</label>
+<label for = "title" class="col-sm-3 col-form-label">Track name:</label>
 <div class="col-sm-9">
-<input type = "text" name="firstname" id="firstname" class="form-control" required 
-                title="Please enter your first name (Second name optional) with First Letter capitalised">
+<input type = "text" name="title" id="title" class="form-control" required 
+                title="Please enter track name">
 </div>
 </div>
 <div class="form-group row">
-<label for = "lastname" class="col-sm-3 col-form-label">Last Name</label>
+<label for = "length" class="col-sm-3 col-form-label">Track length:</label>
 <div class="col-sm-9">
-<input type = "text" name="lastname" id="lastname" class="form-control" required 
-                title="Please enter a Surname (Second name optional) with First Letter capitalised">
+<input type = "text" name="length" id="length" class="form-control" required 
+                title="Please enter the song length">
 </div>
 </div>
 <div class="form-group row">
-<label for = "county" class="col-sm-3 col-form-label">County</label>
-<div class="col-sm-9">
-<input type = "text" name="county" id="county" class="form-control" required  title ="Please enter a valid county with First Letter capitalised">
-</div>
-</div>
-<div class="form-group row">
-<label for = "email" class="col-sm-3 col-form-label">Email Address</label>
-<div class="col-sm-9">
-<input type = "email" name="email" id="email" class="form-control" required 
-     title="Please enter a valid email">
-</div>
-</div>
-  <div class="form-group row">
     <div class="col-sm-10">
-      <input type="submit" id="thesubmit" value="Add Employee">
+      <input type="submit" id="thesubmit" value="Add Track">
     </div>
-  </div>
-
+</div>
 </form>
 </div>
 </div>
 </div>
 </div>
 
+<!-- footer -->
+<footer>
+	<ul class="list-inline banner-social-buttons">
+    <li>
+		<a href="https://www.facebook.com/ArcticMonkeys/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+	</li>
+	<li>
+		<a href="https://twitter.com/ArcticMonkeys/" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+	</li>
+	</ul>
+</div>
+</div>
+</footer>
 
-
-
-<!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p>Later chode</p>
-        </div>
-    </footer>
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="am.js"></script>
-
-<script src='js/handlebars.min.js'></script>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 <script src="js/jquery-3.1.1.min.js"></script>
-<script src="js/popper.min.js"></script>
 <script src="js/jquery-ui.js"></script>
+
+<!-- bootstrap core js -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- js plugin for nav -->
+<script src="js/jquery.easing.min.js"></script>
+
+<!-- custom js -->
+<script src="am.js"></script>
+
+<!-- handlebars js -->
+<script src='js/handlebars.min.js'></script>
+
+<!-- lightbox -->
 <script type="text/javascript" src="js/lightbox.min.js"></script>
 
 
-
-
-
+<!-- accordian -->
 <script type="text/javascript">
 
 $(document).ready(function() {

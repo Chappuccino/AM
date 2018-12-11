@@ -26,7 +26,7 @@ $(function() {
     });
 });
 
-// Closes the Responsive Menu on Menu Item Click
+// closes the responsive menu on menu item click
 $('.navbar-collapse ul li a').click(function() {
   if ($(this).attr('class') != 'dropdown-toggle active' && $(this).attr('class') != 'dropdown-toggle') {
     $('.navbar-toggle:visible').click();
@@ -52,56 +52,99 @@ $('#gallery img').each(function() {
 		function () {
 			$(this).attr('src', imgFile);
 		}
-	); // end hover
-}); // end each
-}); // end ready()
+	); 
+}); 
+}); 
 
+// json array of tracks and song length
 $(document).ready(function() {
-var employee = [
+var track = [
         {
             'id':1,
-		    'firstname': "Fred",
-	        'lastname': "Bloggs",
-	        'county':'Kilkenny',
-	        'email':'fbloggs@gmail.com'
+		    'title': "Star Treatment",
+	        'length': "5:15",
         },
         {
             'id':2,
-			'firstname': "Katy",
-		    'lastname': "Malone",
-		    'county':'Waterford',
-		    'email':'kmalone@gmail.com'
-	    },
+		    'title': "One Perspective",
+	        'length': "4:41",
+        },
         {
             'id':3,
-			'firstname': "Sam",
-		    'lastname': "Dunne",
-		    'county':'Waterford',
-		    'email':'samdunne@gmail.com'
-	    }
+		    'title': "American Sports",
+	        'length': "4:27",
+        },
+		{
+            'id':4,
+		    'title': "Tranquility Base Hotel & Casino",
+	        'length': "3:13",
+        },
+		{
+            'id':5,
+		    'title': "Golden Trunks",
+	        'length': "5:01",
+        },
+		{
+            'id':6,
+		    'title': "Four out of Five",
+	        'length': "4:47",
+        },
+		{
+            'id':7,
+		    'title': "The Worlds First Ever Monster Truck Front Flip",
+	        'length': "4:50",
+        },
+		{
+            'id':8,
+		    'title': "Science Fiction",
+	        'length': "3:10",
+        },
+		{
+            'id':9,
+		    'title': "She Looks Like Fun",
+	        'length': "3:20",
+        },
+		{
+            'id':10,
+		    'title': "Batphone",
+	        'length': "5:20",
+        },
+		{
+            'id':11,
+		    'title': "The Ultracheese",
+	        'length': "5:53",
+        },
   ];
 
+/* test
+for (i in track.songs) 
+{
+	x += "<h1>" + track.songs[i].name + "</h1>";
+	for (j in track.songs[i].title) {
+    x += track.songs[i].title[j];
+  }
+}
+*/
+  
+//handlebars for json array
 var source   = $("#some-template").html();
 var template = Handlebars.compile(source);
-var theCompiledHtml = template(employee);
+var theCompiledHtml = template(track);
 $("#content-placeholder").html(theCompiledHtml);
 
-$('#emplist').submit(function() {
-  newemp= {
+//form
+$('#trackList').submit(function() {
+  newtrack= {
 	 id:$('#id').val(),
-	 firstname:$('#firstname').val(),
-	 lastname:$('#lastname').val(),
-	 county:$('#county').val(),
-	 email:$('#email').val()
+	 title:$('#title').val(),
+	 length:$('#length').val(),
   }
-  employee.push(newemp);
-  var theCompiledHtml = template(employee);
+  track.push(newtrack);
+  var theCompiledHtml = template(track);
   $("#content-placeholder").html(theCompiledHtml);
   $('#modalForm').modal('hide');
   $('input[type="text"]').each(function() {
 		$(this).val("");
   });
-  $('input[type="email"]').val("");
-  return false;
 });
 });
